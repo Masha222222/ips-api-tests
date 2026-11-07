@@ -1,5 +1,5 @@
 from typing import Literal
-
+from datetime import datetime
 from pydantic import BaseModel
 
 
@@ -21,3 +21,10 @@ class PumpStateResponse(BaseModel):
     message: str | None = None
     action_message: str | None = None
     alerts_count: int = 0
+
+class AlertResponse(BaseModel):
+    level: Literal["off", "notification", "warning", "critical"] | None = None
+    level_str: str = ""
+    message: str = ""
+    action_message: str = ""
+    timestamp: datetime | None = None
