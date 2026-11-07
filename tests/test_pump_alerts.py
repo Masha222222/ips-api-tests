@@ -77,3 +77,12 @@ def test_delete_all_alerts(pumps_client, test_pump_id, pump_alerts):
     assert response.json() == [], (
         f"После удаления всех предупреждений ожидался пустой список: {response.text}"
     )
+
+@allure.title("Стенд отклоняет POST /alerts/all")
+def test_post_all_alerts_is_not_allowed(pumps_client, test_pump_id):
+    response = pumps_client.post_all_alerts(test_pump_id)
+
+    assert response.status_code == 405, (
+        f"На стенде для POST /alerts/all ожидался код 405, "
+        f"получен {response.status_code}. Ответ: {response.text}"
+    )

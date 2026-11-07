@@ -33,3 +33,7 @@ class TelemetryRequest(BaseModel):
     glucose_value: float
     glucose_unit: str
     timestamp: datetime
+
+class ResetBlockResponse(BaseModel):
+    status: str
+    message: str

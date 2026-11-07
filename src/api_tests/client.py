@@ -24,3 +24,9 @@ class PumpsClient:
     def send_telemetry(self, pump_id, payload):
         url = f"{self.base_url}/api/v1/pumps/{pump_id}/telemetry"
         return requests.post(url, json=payload, timeout=10)
+    def reset_block(self, pump_id):
+        url = f"{self.base_url}/api/v1/pumps/{pump_id}/block/reset"
+        return requests.post(url, timeout=10)
+    def post_all_alerts(self, pump_id):
+        url = f"{self.base_url}/api/v1/pumps/{pump_id}/alerts/all"
+        return requests.post(url, timeout=10)
