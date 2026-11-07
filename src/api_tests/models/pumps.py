@@ -28,3 +28,8 @@ class AlertResponse(BaseModel):
     message: str = ""
     action_message: str = ""
     timestamp: datetime | None = None
+
+class TelemetryRequest(BaseModel):
+    glucose_value: float
+    glucose_unit: str
+    timestamp: datetime
